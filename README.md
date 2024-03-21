@@ -16,6 +16,8 @@ API a usar: - https://www.omdbapi.com/
 Consigue la API Key en la propia página web registrando tu email.
 Here is your key: 4a4ce108
 
+http://www.omdbapi.com/?apikey=4a4ce108&s=avengers
+
 Requerimientos:
 
 ✅ Necesita mostrar un input para buscar la película y un botón para buscar.

@@ -34,18 +34,20 @@ function useSearch() {
 
 function App() {
   // const movies = responseMovies.Search
-  const { movies } = useMovies()
   const {search, updateSearch, error} = useSearch()
+  const { movies, loading, getMovies} = useMovies({search})
+
   // const [query, setQuery] = useState('')
 
   const handleSubmit = (event) => {
-    event.prenventDefault()
-    const { search } = Object.fromEntries(new window.FormData(event.target))
-    console.log({ search })
+    event.preventDefault()
+    //const { search } = Object.fromEntries(new window.FormData(event.target))
+    console.log({search})
+    getMovies()
+
   }
   const handleChange = (event) => {
     updateSearch(event.target.value)
-    
   }
 
   return (
@@ -64,7 +66,10 @@ function App() {
         {error && <p style={{color: 'red'}}>{error}</p>}
       </header>
       <main>
-        <Movies movies={movies} />
+        {
+          loading? <p>Cargando ......</p>:<Movies movies={movies} />
+        }
+        
       </main>
     </div>
   );
